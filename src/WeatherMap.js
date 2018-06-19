@@ -1,29 +1,29 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 
-import './Github.css'
-import GithubUser from './GithubUser'
+import './WeatherMap.css'
+import WeatherMapCity from './WeatherMapCity'
 
-class Github extends Component {
+class WeatherMap extends Component {
   state = {
-    username: '',
+    cityname: '',
   }
 
   handleChange = (ev) => {
-    this.setState({ username: ev.target.value })
+    this.setState({ cityname: ev.target.value })
   }
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    this.props.history.push(`/github/${this.state.username}`)
+    this.props.history.push(`/weathermap/${this.state.cityname}`)
   }
 
   render() {
     return (
-      <div className="Github">
+      <div className="WeatherMap">
         <img
           src="http://www.aha.io/assets/github.7433692cabbfa132f34adb034e7909fa.png"
-          alt="GitHub"
+          alt="WeatherMap"
           className="logo"
         />
 
@@ -31,22 +31,22 @@ class Github extends Component {
           <div>
             <input
               type="text"
-              placeholder="Enter a GitHub user"
-              value={this.state.username}
+              placeholder="Enter a city name"
+              value={this.state.cityname}
               onChange={this.handleChange}
             />
           </div>
           <div>
             <button type="submit">
-              Look up GitHub user
+              Look up a city
             </button>
           </div>
         </form>
 
-        <Route path="/github/:username" component={GithubUser} />
+        <Route path="/weathermap/:cityname" component={WeatherMapCity} />
       </div>
     )
   }
 }
 
-export default Github
+export default WeatherMap
